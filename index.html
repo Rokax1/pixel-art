@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Bruns-ville con globos pixel-art</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/7.2.4/pixi.min.js"></script>
+  <style>body { margin:0; overflow:hidden }</style>
+</head>
+<body>
+<script>
+  const app = new PIXI.Application({ width:800, height:600, backgroundColor:0x1e1e1e, roundPixels:true });
+  document.body.appendChild(app.view);
+  app.renderer.roundPixels = true;
+
+  const SCALE = 0.5;
+  const buildings = [
+    { key:'brunswick',   url:'assets/brunswick.png',    grid:[1,1], text:'BRUNSVILLE' },
+    { key:'medios',      url:'assets/medios.png',       grid:[0,0], text:'News' },
+    { key:'regulador',   url:'assets/regulador.png',    grid:[2,0], text:'Govt' },
+    { key:'ong',         url:'assets/ong.png',          grid:[0,2], text:'NGO' },
+    { key:'inversores',  url:'assets/inversores.png',   grid:[1,2], text:'Investors' },
+    { key:'empleados',   url:'assets/empleados.png',    grid:[2,2], text:'Staff' }
+  ];
+
+  (async () => {
+    // Carga de texturas + burbuja
+    const urls = buildings.map(b => b.url).concat('assets/bubble.png');
+    const resources = await PIXI.Assets.load(urls);
+
+    // Offset dinámico
+    const sample = resources[buildings[0].url];
+    const w = sample.width  * SCALE;
+    const h = sample.height * SCALE;
+    const offsetX = w + 20;
+    const offsetY = h * 0.6 + 10;
+
+    const toIso = (i,j) => ({
+      x:(i-j)*offsetX,
+      y:(i+j)*offsetY
+    });
+
+    // Contenedor principal
+    const container = new PIXI.Container();
+    container.roundPixels = true;
+    app.stage.addChild(container);
+
+    // Por cada edificio
+    buildings.forEach(b => {
+      const [i,j] = b.grid;
+      const { x,y } = toIso(i,j);
+
+      // Sub-container
+      const cell = new PIXI.Container();
+      cell.x = x; cell.y = y;
+      cell.roundPixels = true;
+
+      // Sprite edificio
+      const spr = new PIXI.Sprite(resources[b.url]);
+      spr.anchor.set(0.5,1);
+      spr.scale.set(SCALE);
+      spr.roundPixels = true;
+      cell.addChild(spr);
+
+      // Bubble sprite
+      const bubble = new PIXI.Sprite(resources['assets/bubble.png']);
+      bubble.anchor.set(0.5,1);
+      // escala la burbuja al ancho del texto
+      const style = new PIXI.TextStyle({ fontFamily:'monospace', fontSize:12, fill:0x000000 });
+      const label = new PIXI.Text(b.text, style);
+      // calcula escala X para la burbuja
+      const scaleX = (label.width + 8) / bubble.width;
+      const scaleY = (label.height + 8) / bubble.height;
+      bubble.scale.set(scaleX, scaleY);
+      bubble.y = -spr.height * SCALE - 4; // 4px separación
+      cell.addChild(bubble);
+
+      // Texto sobre la burbuja
+      label.anchor.set(0.5, 1);
+      label.x = 0;
+      label.y = bubble.y + (bubble.height * bubble.scale.y) + 2; // dentro de la burbuja
+      cell.addChild(label);
+
+      container.addChild(cell);
+    });
+
+    // Centrado y escala para viewport
+    app.renderer.render(app.stage);
+    const bnds = container.getLocalBounds();
+    container.pivot.set(bnds.x + bnds.width/2, bnds.y + bnds.height/2);
+    container.position.set(app.renderer.width/2, app.renderer.height/2);
+    const fit = Math.min(app.renderer.width/bnds.width, app.renderer.height/bnds.height) * 0.8;
+    container.scale.set(fit);
+
+  })().catch(console.error);
+</script>
+</body>
+</html>
