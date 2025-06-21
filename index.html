@@ -1,97 +1,269 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8" />
-  <title>Bruns-ville con globos pixel-art</title>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/7.2.4/pixi.min.js"></script>
-  <style>body { margin:0; overflow:hidden }</style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Brunsville Pixel Art</title>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 </head>
+
 <body>
-<script>
-  const app = new PIXI.Application({ width:800, height:600, backgroundColor:0x1e1e1e, roundPixels:true });
-  document.body.appendChild(app.view);
-  app.renderer.roundPixels = true;
+  <div class="layout-container">
+    <div class="main-container">
+      <div class="scene">
+        <!-- Edificios isométricos -->
+        <!-- <img src="assets/buildings/edificio.png" class="building center" alt="Sede central">
+    <img src="assets/buildings/edificio.png" class="building top-left" alt="Medios">
+    <img src="assets/buildings/edificio.png" class="building top-right" alt="Regulador">
+    <img src="assets/buildings/edificio.png" class="building bottom-left" alt="ONG">
+    <img src="assets/buildings/edificio.png" class="building bottom-right" alt="Inversores">
+    <img src="assets/buildings/edificio.png" class="building bottom" alt="Empleados"> -->
 
-  const SCALE = 0.5;
-  const buildings = [
-    { key:'brunswick',   url:'assets/brunswick.png',    grid:[1,1], text:'BRUNSVILLE' },
-    { key:'medios',      url:'assets/medios.png',       grid:[0,0], text:'News' },
-    { key:'regulador',   url:'assets/regulador.png',    grid:[2,0], text:'Govt' },
-    { key:'ong',         url:'assets/ong.png',          grid:[0,2], text:'NGO' },
-    { key:'inversores',  url:'assets/inversores.png',   grid:[1,2], text:'Investors' },
-    { key:'empleados',   url:'assets/empleados.png',    grid:[2,2], text:'Staff' }
-  ];
+        <!-- Burbujas de diálogo -->
+        <!-- <div class="bubble" style="--x: 24%; --y: 9%;">We need to…</div>
+    <div class="bubble" style="--x: 60%; --y: 32%;">Let me know</div>
+    <div class="bubble" style="--x: 84%; --y: 15%;">…</div>
+    <div class="bubble" style="--x: 27%; --y: 52%;">I think…</div>
+    <div class="bubble" style="--x: 88%; --y: 53%;">I think…</div>
+    <div class="bubble" style="--x: 63%; --y: 73%;">I think…</div> -->
+        <!-- Aquí podrías añadir más según necesites -->
 
-  (async () => {
-    // Carga de texturas + burbuja
-    const urls = buildings.map(b => b.url).concat('assets/bubble.png');
-    const resources = await PIXI.Assets.load(urls);
+        <div class="building-bubble-group"
+          style="position: absolute; top: 3%; left: 37%; width: 120px; height: 120px; position: relative;">
+          <img src="assets/buildings/edificio.png" class="building center" alt="Sede central"
+            style="position: absolute; left: 0; top: 40px;">
+          <div class="bubble" style="position: absolute; top: 35px; left: 41px;">We need to…</div>
+        </div>
+        <div class="building-bubble-group"
+          style="position: absolute; top: -18%; left: 75%; width: 120px; height: 120px; position: relative;">
+          <img src="assets/buildings/edificio.png" class="building center" alt="Sede central"
+            style="position: absolute; left: 0; top: 40px;">
+          <div class="bubble" style="position: absolute; top: 35px; left: 41px;">We need to…</div>
+        </div>
+        <div class="building-bubble-group"
+          style="position: absolute; top: 6%; left: 54%; width: 120px; height: 120px; position: relative;">
+          <img src="assets/buildings/edificio.png" class="building center" alt="Sede central"
+            style="position: absolute; left: 0; top: 40px;">
+          <div class="bubble" style="position: absolute; top: 35px; left: 41px;">We need to…</div>
+        </div>
+        <div class="building-bubble-group"
+          style="position: absolute; top: -29%; left: 36%; width: 120px; height: 120px; position: relative;">
+          <img src="assets/buildings/edificio.png" class="building center" alt="Sede central"
+            style="position: absolute; left: 0; top: 40px;">
+          <div class="bubble" style="position: absolute; top: 35px; left: 41px;">We need to…</div>
+        </div>
+        <div class="building-bubble-group"
+          style="position: absolute; top: -35%; left: 16%; width: 120px; height: 120px; position: relative;">
+          <img src="assets/buildings/edificio.png" class="building center" alt="Sede central"
+            style="position: absolute; left: 0; top: 40px;">
+          <div class="bubble" style="position: absolute; top: 35px; left: 41px;">We need to…</div>
+        </div>
+        <div class="building-bubble-group"
+          style="position: absolute; top: -98%; left: -1%; width: 120px; height: 120px; position: relative;">
+          <img src="assets/buildings/edificio.png" class="building center" alt="Sede central"
+            style="position: absolute; left: 0; top: 40px;">
+          <div class="bubble" style="position: absolute; top: 35px; left: 41px;">We need to…</div>
+        </div>
 
-    // Offset dinámico
-    const sample = resources[buildings[0].url];
-    const w = sample.width  * SCALE;
-    const h = sample.height * SCALE;
-    const offsetX = w + 20;
-    const offsetY = h * 0.6 + 10;
 
-    const toIso = (i,j) => ({
-      x:(i-j)*offsetX,
-      y:(i+j)*offsetY
+        <!-- tree -->
+        <img src="assets/tree-rounded.png" class="tree" style="top: 57%;  left: 82%;" />
+        <img src="assets/tree.png" class="tree" style="top: 84%;  left: 82%;" />
+        <img src="assets/tree-rounded.png" class="tree" style="top: 42%;  left: 94%;" />
+        <img src="assets/tree.png" class="tree" style="top: 85%;  left: 40%;" />
+        <img src="assets/tree.png" class="tree" style="top: 41%;  left: 27%;" />
+        <img src="assets/tree-rounded.png" class="tree" style="top: 58%;  left: 8%;" />
+        <img src="assets/tree.png" class="tree" style="top: 11%;  left: 66%;" />
+
+        <!-- tree -->
+
+        <!-- car -->
+
+        <img src="assets/car.png" class="car" style="top: 1%;  left: 94%;" />
+        <img src="assets/car-red.png" class="car-red" style="top: 1%;  left: 94%;" />
+        <!-- inicio  -2 10  fin 56 94 -->
+
+      </div>
+
+      <div class="graphic-form" style="height: 600px; width: 500px; display: flex; flex-direction: column;">
+        <div style="height: 50%; width: 100%; top: 0; left: 0;">
+          <div class="pixel-panel">
+            <input type="text" placeholder="Enter a message…">
+            <select>
+              <option value="media">media</option>
+              <!-- más opciones si quieres -->
+            </select>
+            <button type="button">send</button>
+          </div>
+
+        </div>
+        <div style=" height: 50%; width: 100%; ">
+          <canvas id="mountainChart"></canvas>
+
+        </div>
+      </div>
+    </div>
+    <div class="log-area" id="logArea"></div>
+  </div>
+
+  <script>
+    // filepath: c:\Users\leand\Herd\pixel-art\index.html
+    document.addEventListener('DOMContentLoaded', function () {
+      function moveElementDiagonallyInfinite(className, start, end, steps = 60, intervalMs = 150) {
+        const el = document.querySelector('.' + className);
+        if (!el) return;
+
+        let top = start.top;
+        let left = start.left;
+        const topStep = (end.top - start.top) / steps;
+        const leftStep = (end.left - start.left) / steps;
+        let currentStep = 0;
+
+        el.style.top = top + '%';
+        el.style.left = left + '%';
+
+        setInterval(() => {
+          if (currentStep >= steps) {
+            top = start.top;
+            left = start.left;
+            currentStep = 0;
+          }
+          top += topStep;
+          left += leftStep;
+          el.style.top = top + '%';
+          el.style.left = left + '%';
+          currentStep++;
+        }, intervalMs);
+      }
+
+      // Ejemplo de uso para el auto azul:
+      moveElementDiagonallyInfinite(
+        'car',
+        { top: 8, left: 94 },    // punto de inicio
+        { top: 80, left: 0 },   // punto de fin
+        60,                      // pasos (opcional)
+        100                      // velocidad en ms (opcional)
+      );
+
+      moveElementDiagonallyInfinite(
+        'car-red',
+        { top: 9, left: 0 },    // punto de inicio
+        { top: 81, left: 93 },   // punto de fin
+        60,                      // pasos (opcional)
+        150                      // velocidad en ms (opcional)
+      );
+
+      // Ejemplo para el auto rojo (puedes cambiar los valores):
+      // moveElementDiagonallyInfinite('car-red', { top: 1, left: 94 }, { top: 68, left: -1 });
     });
+  </script>
 
-    // Contenedor principal
-    const container = new PIXI.Container();
-    container.roundPixels = true;
-    app.stage.addChild(container);
+  <script>
+    // Plugin para desactivar completamente el suavizado
+    const noAA = {
+      id: 'noAA',
+      beforeDraw(chart) {
+        chart.ctx.imageSmoothingEnabled = false;
+      }
+    };
 
-    // Por cada edificio
-    buildings.forEach(b => {
-      const [i,j] = b.grid;
-      const { x,y } = toIso(i,j);
-
-      // Sub-container
-      const cell = new PIXI.Container();
-      cell.x = x; cell.y = y;
-      cell.roundPixels = true;
-
-      // Sprite edificio
-      const spr = new PIXI.Sprite(resources[b.url]);
-      spr.anchor.set(0.5,1);
-      spr.scale.set(SCALE);
-      spr.roundPixels = true;
-      cell.addChild(spr);
-
-      // Bubble sprite
-      const bubble = new PIXI.Sprite(resources['assets/bubble.png']);
-      bubble.anchor.set(0.5,1);
-      // escala la burbuja al ancho del texto
-      const style = new PIXI.TextStyle({ fontFamily:'monospace', fontSize:12, fill:0x000000 });
-      const label = new PIXI.Text(b.text, style);
-      // calcula escala X para la burbuja
-      const scaleX = (label.width + 8) / bubble.width;
-      const scaleY = (label.height + 8) / bubble.height;
-      bubble.scale.set(scaleX, scaleY);
-      bubble.y = -spr.height * SCALE - 4; // 4px separación
-      cell.addChild(bubble);
-
-      // Texto sobre la burbuja
-      label.anchor.set(0.5, 1);
-      label.x = 0;
-      label.y = bubble.y + (bubble.height * bubble.scale.y) + 2; // dentro de la burbuja
-      cell.addChild(label);
-
-      container.addChild(cell);
+    const ctx = document.getElementById('mountainChart').getContext('2d');
+    new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul'],
+        datasets: [{
+          label: 'Stakeholder A',
+          data: [70, 50, 40, 70, 60, 80, 55],
+          borderColor: '#F4D03F',
+          borderWidth: 4,          // líneas gruesas
+          tension: 0,              // sin curvas, segmentos rectos
+          stepped: false,          // sin escalones
+          borderCapStyle: 'butt',
+          borderJoinStyle: 'miter',
+          pointRadius: 0
+        }, {
+          label: 'Stakeholder B',
+          data: [70, 25, 45, 35, 55, 65, 50],
+          borderColor: '#52BE80',
+          borderWidth: 4,
+          tension: 0,
+          stepped: false,
+          borderCapStyle: 'butt',
+          borderJoinStyle: 'miter',
+          pointRadius: 0
+        }, {
+          label: 'Stakeholder C',
+          data: [70, 35, 60, 50, 70, 60, 75],
+          borderColor: '#E74C3C',
+          borderWidth: 4,
+          tension: 0,
+          stepped: false,
+          borderCapStyle: 'butt',
+          borderJoinStyle: 'miter',
+          pointRadius: 0
+        }]
+      },
+      options: {
+        animation: true,       // sin animaciones para mantener nitidez
+        plugins: {
+          noAA,                 // aplicamos el plugin de no antialias
+          legend: { display: false }
+        },
+        scales: {
+          x: { display: false },
+          y: { display: false }
+        },
+        responsive: true,
+        maintainAspectRatio: false
+      }
     });
+  </script>
 
-    // Centrado y escala para viewport
-    app.renderer.render(app.stage);
-    const bnds = container.getLocalBounds();
-    container.pivot.set(bnds.x + bnds.width/2, bnds.y + bnds.height/2);
-    container.position.set(app.renderer.width/2, app.renderer.height/2);
-    const fit = Math.min(app.renderer.width/bnds.width, app.renderer.height/bnds.height) * 0.8;
-    container.scale.set(fit);
+  <script>
+    // Arreglo inicial de logs
+    const logs = [
+      { type: 'sender', text: 'Hola, ¿cómo van las métricas?' },
+      { type: 'receiver', text: 'Reputación subió un 12% esta semana.' },
+      { type: 'sender', text: 'Perfecto, añade al reporte.' }
+    ];
 
-  })().catch(console.error);
-</script>
+    const logEl = document.getElementById('logArea');
+
+    function renderLogs() {
+      logEl.innerHTML = '';
+      logs.forEach(({ type, text }) => {
+        const entry = document.createElement('div');
+        entry.classList.add('log-entry', type);
+        entry.textContent = (type === 'sender' ? 'Tú: ' : 'Sistema: ') + text;
+        logEl.appendChild(entry);
+      });
+      // Auto-scroll al final
+      logEl.scrollTop = logEl.scrollHeight;
+    }
+
+    // Llamar esta función para añadir nuevos mensajes
+    function addLog(type, text) {
+      logs.push({ type, text });
+      renderLogs();
+    }
+
+    // Inicializar display
+    renderLogs();
+
+    // Ejemplo de uso con retraso:
+    setTimeout(() => addLog('receiver', 'Nuevo alerta de pagos fallidos.'), 3000);
+  </script>
+
+
+
+
+
+
 </body>
+
 </html>

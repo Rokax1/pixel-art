@@ -1,0 +1,213 @@
+/* Reset minimal */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Press Start 2P', monospace;
+}
+
+body {
+  background: #8acaca;
+  font-family: 'Press Start 2P', monospace;
+  display: flex;
+  height: 100vh;
+}
+
+.layout-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.main-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.scene {
+  position: relative;
+  width: 800px;
+  height: 600px;
+  background: url('../assets/base-3.png') no-repeat center center;
+  background-size: cover;
+  /* ó “contain” si prefieres ajustar */
+  border: 8px solid #1b2f3a;
+}
+
+/* Forzar pixel art nitidez */
+img,
+.bubble {
+  image-rendering: pixelated;
+}
+
+.building {
+  position: absolute;
+  width: 200px;
+  /* anchura de cada sprite */
+  height: auto;
+  /* coloca cada uno según su clase */
+}
+
+.center {
+  top: 29%;
+  left: 47%;
+  z-index: 50;
+}
+
+.top-left {
+  top: 5%;
+  left: 11%;
+  z-index: 40;
+}
+
+.top-right {
+  top: 10%;
+  left: 71%;
+  z-index: 40;
+}
+
+.bottom-left {
+  top: 47%;
+  left: 14%;
+  z-index: 30;
+}
+
+.bottom-right {
+  top: 50%;
+  left: 75%;
+  z-index: 30;
+}
+
+.bottom {
+  top: 69%;
+  left: 50%;
+  z-index: 20;
+}
+
+/* Burbujas de diálogo */
+.bubble {
+  position: absolute;
+  --w: 120px;
+  width: var(--w);
+  padding: 4px;
+  background: #f2f2f2;
+  border: 2px solid #1b2f3a;
+  border-radius: 4px;
+  font-size: 10px;
+  text-align: center;
+  /* variables para posicionar */
+  left: calc(var(--x) - var(--w)/2);
+  top: calc(var(--y) - 20px);
+  z-index: 100;
+}
+
+.tree {
+  position: absolute;
+  width: 50px;
+  /* anchura de cada sprite */
+  height: auto;
+  z-index: 99;
+}
+
+.car {
+  position: absolute;
+  width: 50px;
+  /* anchura de cada sprite */
+  height: auto;
+}
+
+.car-red {
+  position: absolute;
+  width: 50px;
+  /* anchura de cada sprite */
+  height: auto;
+  transform: scaleX(-1);
+  /* Invierte la imagen horizontalmente */
+
+}
+
+.pixel-panel {
+
+  background: #F2E4C3;
+  border: 6px solid #2B3A67;
+  padding: 12px;
+  display: grid;
+  grid-gap: 12px;
+  height: 100%;
+}
+
+.pixel-panel input {
+  padding: 16px;
+  border: 4px solid #2B3A67;
+  background: #FFFFFF;
+  font-size: 14px;
+  outline: none;
+}
+
+.pixel-panel select {
+  padding: 16px;
+  border: 4px solid #2B3A67;
+  background: #C7A96D;
+  color: #000;
+  font-size: 14px;
+  outline: none;
+  cursor: pointer;
+}
+
+.pixel-panel button {
+  padding: 16px 24px;
+  border: 4px solid #2B3A67;
+  background: #D6393A;
+  color: #FFF;
+  font-size: 14px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+/* Forzar píxeles cuadrados */
+.pixel-panel * {
+  image-rendering: pixelated;
+}
+
+#mountainChart {
+  width: 100% !important;
+  height: 100% !important;
+  image-rendering: pixelated;
+  /* pixel perfecto */
+  background: #253B4B url('grass_tile.png') repeat;
+  border: 4px solid #112233;
+  /* marco grueso estilo píxel */
+  /* reemplaza 'grass_tile.png' por tu mosaico 8×8 de césped pixelado */
+}
+
+
+/* 3) Log area */
+.log-area {
+  background: #F2E4C3;
+  border: 6px solid #2B3A67;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.log-entry {
+  margin-bottom: 6px;
+  padding: 6px 8px;
+  max-width: 80%;
+  border: 4px solid #2B3A67;
+  line-height: 1.2;
+  font-size: 12px;
+}
+
+.log-entry.sender {
+  align-self: flex-start;
+  background: #FFFFFF;
+  color: #000;
+}
+
+.log-entry.receiver {
+  align-self: flex-end;
+  background: #C7A96D;
+  color: #000;
+}
