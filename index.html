@@ -8,69 +8,51 @@
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css" />
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
 </head>
 
 <body>
   <div class="layout-container">
     <div class="main-container">
       <div class="scene">
-        <!-- Edificios isométricos -->
-        <!-- <img src="assets/buildings/edificio.png" class="building center" alt="Sede central">
-    <img src="assets/buildings/edificio.png" class="building top-left" alt="Medios">
-    <img src="assets/buildings/edificio.png" class="building top-right" alt="Regulador">
-    <img src="assets/buildings/edificio.png" class="building bottom-left" alt="ONG">
-    <img src="assets/buildings/edificio.png" class="building bottom-right" alt="Inversores">
-    <img src="assets/buildings/edificio.png" class="building bottom" alt="Empleados"> -->
-
-        <!-- Burbujas de diálogo -->
-        <!-- <div class="bubble" style="--x: 24%; --y: 9%;">We need to…</div>
-    <div class="bubble" style="--x: 60%; --y: 32%;">Let me know</div>
-    <div class="bubble" style="--x: 84%; --y: 15%;">…</div>
-    <div class="bubble" style="--x: 27%; --y: 52%;">I think…</div>
-    <div class="bubble" style="--x: 88%; --y: 53%;">I think…</div>
-    <div class="bubble" style="--x: 63%; --y: 73%;">I think…</div> -->
-        <!-- Aquí podrías añadir más según necesites -->
-
-        <div class="building-bubble-group"
+        <!-- Edificios y burbujas agrupados -->
+        <div class="building-bubble-group" id="group-NGO"
           style="position: absolute; top: 3%; left: 37%; width: 120px; height: 120px; position: relative;">
           <img src="assets/buildings/edificio.png" class="building center" alt="Sede central"
             style="position: absolute; left: 0; top: 40px;">
-          <div class="bubble" style="position: absolute; top: 35px; left: 41px;">We need to…</div>
+          <div class="bubble" id="bubble-NGO" style="position: absolute; top: 0; left: 41px;">....</div>
         </div>
-        <div class="building-bubble-group"
+        <div class="building-bubble-group" id="group-Media"
           style="position: absolute; top: -18%; left: 75%; width: 120px; height: 120px; position: relative;">
-          <img src="assets/buildings/edificio.png" class="building center" alt="Sede central"
+          <img src="assets/buildings/edificio.png" class="building media" alt="Medios"
             style="position: absolute; left: 0; top: 40px;">
-          <div class="bubble" style="position: absolute; top: 35px; left: 41px;">We need to…</div>
+          <div class="bubble" id="bubble-Media" style="position: absolute; top: 0; left: 41px;">....</div>
         </div>
-        <div class="building-bubble-group"
+        <div class="building-bubble-group" id="group-Investors"
           style="position: absolute; top: 6%; left: 54%; width: 120px; height: 120px; position: relative;">
-          <img src="assets/buildings/edificio.png" class="building center" alt="Sede central"
+          <img src="assets/buildings/edificio.png" class="building regulador" alt="Regulador"
             style="position: absolute; left: 0; top: 40px;">
-          <div class="bubble" style="position: absolute; top: 35px; left: 41px;">We need to…</div>
+          <div class="bubble" id="bubble-Investors" style="position: absolute; top: 0; left: 41px;">....</div>
         </div>
-        <div class="building-bubble-group"
+        <div class="building-bubble-group" id="group-Brunswick"
           style="position: absolute; top: -29%; left: 36%; width: 120px; height: 120px; position: relative;">
-          <img src="assets/buildings/edificio.png" class="building center" alt="Sede central"
+          <img src="assets/buildings/edificio.png" class="building Brunswick" alt="Brunswick"
             style="position: absolute; left: 0; top: 40px;">
-          <div class="bubble" style="position: absolute; top: 35px; left: 41px;">We need to…</div>
+          <div class="bubble" id="bubble-Brunswick" style="position: absolute; top: 0; left: 41px;">....</div>
         </div>
-        <div class="building-bubble-group"
+        <div class="building-bubble-group" id="group-Regulator"
           style="position: absolute; top: -35%; left: 16%; width: 120px; height: 120px; position: relative;">
-          <img src="assets/buildings/edificio.png" class="building center" alt="Sede central"
+          <img src="assets/buildings/edificio.png" class="building inversores" alt="Inversores"
             style="position: absolute; left: 0; top: 40px;">
-          <div class="bubble" style="position: absolute; top: 35px; left: 41px;">We need to…</div>
+          <div class="bubble" id="bubble-Regulator" style="position: absolute; top: 0; left: 41px;">....</div>
         </div>
-        <div class="building-bubble-group"
+        <div class="building-bubble-group" id="group-Employees"
           style="position: absolute; top: -98%; left: -1%; width: 120px; height: 120px; position: relative;">
-          <img src="assets/buildings/edificio.png" class="building center" alt="Sede central"
+          <img src="assets/buildings/edificio.png" class="building empleados" alt="Empleados"
             style="position: absolute; left: 0; top: 40px;">
-          <div class="bubble" style="position: absolute; top: 35px; left: 41px;">We need to…</div>
+          <div class="bubble" id="bubble-Employees" style="position: absolute; top: 0; left: 41px;">....</div>
         </div>
 
-
-        <!-- tree -->
+        <!-- Árboles y autos -->
         <img src="assets/tree-rounded.png" class="tree" style="top: 57%;  left: 82%;" />
         <img src="assets/tree.png" class="tree" style="top: 84%;  left: 82%;" />
         <img src="assets/tree-rounded.png" class="tree" style="top: 42%;  left: 94%;" />
@@ -79,31 +61,24 @@
         <img src="assets/tree-rounded.png" class="tree" style="top: 58%;  left: 8%;" />
         <img src="assets/tree.png" class="tree" style="top: 11%;  left: 66%;" />
 
-        <!-- tree -->
-
-        <!-- car -->
-
         <img src="assets/car.png" class="car" style="top: 1%;  left: 94%;" />
         <img src="assets/car-red.png" class="car-red" style="top: 1%;  left: 94%;" />
-        <!-- inicio  -2 10  fin 56 94 -->
-
       </div>
 
       <div class="graphic-form" style="height: 600px; width: 500px; display: flex; flex-direction: column;">
         <div style="height: 50%; width: 100%; top: 0; left: 0;">
           <div class="pixel-panel">
-            <input type="text" placeholder="Enter a message…">
-            <select>
-              <option value="media">media</option>
-              <!-- más opciones si quieres -->
+            <!-- Selector de escenario -->
+            <select id="scenarioSelect">
+              <option value="escenario1">Escenario 1</option>
+              <option value="escenario2">Escenario 2</option>
+              <option value="escenario3">Escenario 3</option>
             </select>
-            <button type="button">send</button>
+            <button type="button" id="sendBtn">send</button>
           </div>
-
         </div>
         <div style=" height: 50%; width: 100%; ">
           <canvas id="mountainChart"></canvas>
-
         </div>
       </div>
     </div>
@@ -111,7 +86,7 @@
   </div>
 
   <script>
-    // filepath: c:\Users\leand\Herd\pixel-art\index.html
+    // Movimiento de autos (mantén este script)
     document.addEventListener('DOMContentLoaded', function () {
       function moveElementDiagonallyInfinite(className, start, end, steps = 60, intervalMs = 150) {
         const el = document.querySelector('.' + className);
@@ -140,25 +115,23 @@
         }, intervalMs);
       }
 
-      // Ejemplo de uso para el auto azul:
+      // Auto azul
       moveElementDiagonallyInfinite(
         'car',
-        { top: 8, left: 94 },    // punto de inicio
-        { top: 80, left: 0 },   // punto de fin
-        60,                      // pasos (opcional)
-        100                      // velocidad en ms (opcional)
+        { top: 8, left: 94 },
+        { top: 80, left: 0 },
+        60,
+        100
       );
 
+      // Auto rojo
       moveElementDiagonallyInfinite(
         'car-red',
-        { top: 9, left: 0 },    // punto de inicio
-        { top: 81, left: 93 },   // punto de fin
-        60,                      // pasos (opcional)
-        150                      // velocidad en ms (opcional)
+        { top: 9, left: 0 },
+        { top: 81, left: 93 },
+        60,
+        150
       );
-
-      // Ejemplo para el auto rojo (puedes cambiar los valores):
-      // moveElementDiagonallyInfinite('car-red', { top: 1, left: 94 }, { top: 68, left: -1 });
     });
   </script>
 
@@ -171,99 +144,431 @@
       }
     };
 
+
+    const scenarios = {
+
+      escenario1: [
+        {
+          remitente: "",
+          receptor: "",
+          mensaje: "Baseline",
+          scores: { Employees: 70, Investors: 70, Media: 70, NGOs: 70, Regulator: 70 }
+        },
+        {
+          remitente: "Brunswick",
+          receptor: "Media",
+          mensaje: "GlobalCo to cut 8 000 jobs",
+          scores: { Employees: 70, Investors: 70, Media: 70, NGOs: 70, Regulator: 70 }
+        },
+        {
+          remitente: "Media",
+          receptor: "Public",
+          mensaje: "Breaking: Massive layoffs at GlobalCo",
+          scores: { Employees: 70, Investors: 70, Media: 65, NGOs: 70, Regulator: 70 }
+        },
+        {
+          remitente: "GlobalCo",
+          receptor: "Employees",
+          mensaje: "Restructuring for long-term health",
+          scores: { Employees: 60, Investors: 75, Media: 65, NGOs: 68, Regulator: 65 }
+        },
+        {
+          remitente: "NGO",
+          receptor: "Media",
+          mensaje: "Corporate greed, workers pay the price",
+          scores: { Employees: 57, Investors: 75, Media: 65, NGOs: 66, Regulator: 65 }
+        },
+        {
+          remitente: "GlobalCo",
+          receptor: "Investors",
+          mensaje: "Savings boost EPS by 12 % next FY",
+          scores: { Employees: 57, Investors: 78, Media: 65, NGOs: 58, Regulator: 65 }
+        },
+        {
+          remitente: "Regulator",
+          receptor: "Brunswick",
+          mensaje: "Provide compliance plan for layoffs",
+          scores: { Employees: 57, Investors: 78, Media: 65, NGOs: 58, Regulator: 65 }
+        },
+        {
+          remitente: "Brunswick",
+          receptor: "Media",
+          mensaje: "$25 k severance + retraining fund",
+          scores: { Employees: 58, Investors: 77, Media: 80, NGOs: 60, Regulator: 66 }
+        },
+        {
+          remitente: "Media",
+          receptor: "Public",
+          mensaje: "Added benefits soften the blow",
+          scores: { Employees: 60, Investors: 76, Media: 78, NGOs: 62, Regulator: 67 }
+        },
+        {
+          remitente: "GlobalCo",
+          receptor: "Employees",
+          mensaje: "Internal mobility priority",
+          scores: { Employees: 63, Investors: 76, Media: 78, NGOs: 62, Regulator: 67 }
+        },
+        {
+          remitente: "NGO",
+          receptor: "Public",
+          mensaje: "Retraining fund is a start",
+          scores: { Employees: 64, Investors: 75, Media: 79, NGOs: 64, Regulator: 68 }
+        },
+        {
+          remitente: "Financial",
+          receptor: "Investors",
+          mensaje: "Market applauds cost control",
+          scores: { Employees: 64, Investors: 80, Media: 80, NGOs: 63, Regulator: 68 }
+        },
+        {
+          remitente: "Regulator",
+          receptor: "Public",
+          mensaje: "Monitoring; no further action now",
+          scores: { Employees: 65, Investors: 81, Media: 81, NGOs: 64, Regulator: 70 }
+        },
+        {
+          remitente: "—",
+          receptor: "—",
+          mensaje: "End 60-sec snapshot",
+          scores: { Employees: 65, Investors: 81, Media: 81, NGOs: 64, Regulator: 70 }
+        }
+      ],
+      escenario2: [
+        {
+          remitente: "",
+          receptor: "",
+          mensaje: "Baseline",
+          scores: { Employees: 70, Investors: 70, Media: 70, NGOs: 70, Regulator: 70 }
+        },
+        {
+          remitente: "Media",
+          receptor: "Public",
+          mensaje: "Rig explodes, oil leak feared",
+          scores: { Employees: 68, Investors: 65, Media: 60, NGOs: 60, Regulator: 62 }
+        },
+        {
+          remitente: "PetrolCo",
+          receptor: "Media",
+          mensaje: "Environmental impact limited",
+          scores: { Employees: 67, Investors: 66, Media: 62, NGOs: 59, Regulator: 63 }
+        },
+        {
+          remitente: "Regulator",
+          receptor: "PetrolCo",
+          mensaje: "Send containment plan now",
+          scores: { Employees: 66, Investors: 63, Media: 61, NGOs: 58, Regulator: 62 }
+        },
+        {
+          remitente: "PetrolCo",
+          receptor: "Public",
+          mensaje: "I want my life back",
+          scores: { Employees: 60, Investors: 58, Media: 57, NGOs: 55, Regulator: 59 }
+        },
+        {
+          remitente: "Brunswick",
+          receptor: "Media",
+          mensaje: "Full transparency & accountability",
+          scores: { Employees: 61, Investors: 60, Media: 60, NGOs: 58, Regulator: 60 }
+        },
+        {
+          remitente: "PetrolCo",
+          receptor: "Public",
+          mensaje: "$20 B victims' fund",
+          scores: { Employees: 65, Investors: 67, Media: 62, NGOs: 62, Regulator: 64 }
+        },
+        {
+          remitente: "Regulator",
+          receptor: "Public",
+          mensaje: "CEO apologizes under oath",
+          scores: { Employees: 66, Investors: 68, Media: 63, NGOs: 63, Regulator: 65 }
+        },
+        {
+          remitente: "PetrolCo",
+          receptor: "Public",
+          mensaje: "Live video of oil flow",
+          scores: { Employees: 67, Investors: 69, Media: 65, NGOs: 64, Regulator: 66 }
+        },
+        {
+          remitente: "PetrolCo",
+          receptor: "Public",
+          mensaje: "Well successfully capped",
+          scores: { Employees: 70, Investors: 74, Media: 67, NGOs: 67, Regulator: 70 }
+        },
+        {
+          remitente: "Regulator",
+          receptor: "Public",
+          mensaje: "Water quality improving",
+          scores: { Employees: 71, Investors: 75, Media: 68, NGOs: 68, Regulator: 71 }
+        },
+        {
+          remitente: "Financial",
+          receptor: "Investors",
+          mensaje: "PetrolCo outlook stabilizing",
+          scores: { Employees: 72, Investors: 78, Media: 69, NGOs: 69, Regulator: 72 }
+        },
+        {
+          remitente: "NGO",
+          receptor: "Public",
+          mensaje: "Cleanup progress is real",
+          scores: { Employees: 73, Investors: 79, Media: 70, NGOs: 71, Regulator: 73 }
+        },
+        {
+          remitente: "—",
+          receptor: "—",
+          mensaje: "End 60-sec snapshot",
+          scores: { Employees: 73, Investors: 79, Media: 70, NGOs: 71, Regulator: 73 }
+        }
+      ],
+      escenario3: [{
+        remitente: "",
+        receptor: "",
+        mensaje: "Baseline",
+        scores: { Employees: 70, Investors: 70, Media: 70, NGOs: 70, Regulator: 70 }
+      },
+      {
+        remitente: "Media",
+        receptor: "Public",
+        mensaje: "BurgerCo & CoffeeCorp announce merger",
+        scores: { Employees: 68, Investors: 75, Media: 65, NGOs: 65, Regulator: 66 }
+      },
+      {
+        remitente: "BurgerCo",
+        receptor: "Investors",
+        mensaje: "Creates global QSR leader",
+        scores: { Employees: 67, Investors: 78, Media: 66, NGOs: 64, Regulator: 66 }
+      },
+      {
+        remitente: "NGO",
+        receptor: "Media",
+        mensaje: "Job cuts expected",
+        scores: { Employees: 63, Investors: 77, Media: 68, NGOs: 63, Regulator: 65 }
+      },
+      {
+        remitente: "NGO",
+        receptor: "Public",
+        mensaje: "Tax-inversion concern",
+        scores: { Employees: 62, Investors: 75, Media: 70, NGOs: 60, Regulator: 62 }
+      },
+      {
+        remitente: "Brunswick",
+        receptor: "Media",
+        mensaje: "HQ stays; 5 k jobs protected",
+        scores: { Employees: 64, Investors: 76, Media: 68, NGOs: 62, Regulator: 64 }
+      },
+      {
+        remitente: "Regulator",
+        receptor: "Public",
+        mensaje: "Antitrust review begins",
+        scores: { Employees: 63, Investors: 74, Media: 69, NGOs: 61, Regulator: 60 }
+      },
+      {
+        remitente: "Brunswick",
+        receptor: "Public",
+        mensaje: "$200 M community fund",
+        scores: { Employees: 65, Investors: 75, Media: 68, NGOs: 65, Regulator: 62 }
+      },
+      {
+        remitente: "Financial",
+        receptor: "Investors",
+        mensaje: "EPS accretive Year 1",
+        scores: { Employees: 65, Investors: 78, Media: 67, NGOs: 65, Regulator: 63 }
+      },
+      {
+        remitente: "BurgerCo",
+        receptor: "Employees",
+        mensaje: "No store closures planned",
+        scores: { Employees: 68, Investors: 77, Media: 66, NGOs: 65, Regulator: 64 }
+      },
+      {
+        remitente: "Media",
+        receptor: "Public",
+        mensaje: "Job safeguards highlighted",
+        scores: { Employees: 69, Investors: 77, Media: 68, NGOs: 66, Regulator: 64 }
+      },
+      {
+        remitente: "NGO",
+        receptor: "Public",
+        mensaje: "Monitoring commitments",
+        scores: { Employees: 69, Investors: 76, Media: 67, NGOs: 67, Regulator: 64 }
+      },
+      {
+        remitente: "Regulator",
+        receptor: "Public",
+        mensaje: "Merger cleared w/ conditions",
+        scores: { Employees: 71, Investors: 80, Media: 69, NGOs: 68, Regulator: 70 }
+      },
+      {
+        remitente: "—",
+        receptor: "—",
+        mensaje: "End 60-sec snapshot",
+        scores: { Employees: 71, Investors: 80, Media: 69, NGOs: 68, Regulator: 70 }
+      }]
+
+    }
+
+    // --- VARIABLES DE CONTROL ---
+    let dataRows = scenarios.escenario1; // Por defecto el primero
+    let currentIndex = 0;
+    // --- GRÁFICO ---
+    const colors = ['#F4D03F', '#52BE80', '#E74C3C', '#5DADE2', '#AF7AC5', '#F1948A'];
     const ctx = document.getElementById('mountainChart').getContext('2d');
-    new Chart(ctx, {
+    const chartInstance = new Chart(ctx, {
       type: 'line',
       data: {
         labels: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul'],
-        datasets: [{
-          label: 'Stakeholder A',
-          data: [70, 50, 40, 70, 60, 80, 55],
-          borderColor: '#F4D03F',
-          borderWidth: 4,          // líneas gruesas
-          tension: 0,              // sin curvas, segmentos rectos
-          stepped: false,          // sin escalones
-          borderCapStyle: 'butt',
-          borderJoinStyle: 'miter',
-          pointRadius: 0
-        }, {
-          label: 'Stakeholder B',
-          data: [70, 25, 45, 35, 55, 65, 50],
-          borderColor: '#52BE80',
-          borderWidth: 4,
-          tension: 0,
-          stepped: false,
-          borderCapStyle: 'butt',
-          borderJoinStyle: 'miter',
-          pointRadius: 0
-        }, {
-          label: 'Stakeholder C',
-          data: [70, 35, 60, 50, 70, 60, 75],
-          borderColor: '#E74C3C',
-          borderWidth: 4,
-          tension: 0,
-          stepped: false,
-          borderCapStyle: 'butt',
-          borderJoinStyle: 'miter',
-          pointRadius: 0
-        }]
+        datasets: []
       },
       options: {
-        animation: true,       // sin animaciones para mantener nitidez
-        plugins: {
-          noAA,                 // aplicamos el plugin de no antialias
-          legend: { display: false }
-        },
-        scales: {
-          x: { display: false },
-          y: { display: false }
-        },
+        plugins: { legend: { display: false } },
+        scales: { x: { display: false }, y: { display: false } },
         responsive: true,
         maintainAspectRatio: false
       }
     });
-  </script>
 
-  <script>
-    // Arreglo inicial de logs
-    const logs = [
-      { type: 'sender', text: 'Hola, ¿cómo van las métricas?' },
-      { type: 'receiver', text: 'Reputación subió un 12% esta semana.' },
-      { type: 'sender', text: 'Perfecto, añade al reporte.' }
-    ];
 
-    const logEl = document.getElementById('logArea');
+    // --- CAMBIO DE ESCENARIO ---
+    document.getElementById('scenarioSelect').addEventListener('change', function () {
+      dataRows = scenarios[this.value];
+      currentIndex = 0;
+      // Limpia el gráfico y el log
+      chartInstance.data.datasets.forEach(ds => ds.data = []);
+      chartInstance.update();
+      document.getElementById('logArea').innerHTML = '';
+    });
 
-    function renderLogs() {
-      logEl.innerHTML = '';
-      logs.forEach(({ type, text }) => {
-        const entry = document.createElement('div');
-        entry.classList.add('log-entry', type);
-        entry.textContent = (type === 'sender' ? 'Tú: ' : 'Sistema: ') + text;
-        logEl.appendChild(entry);
+
+    setInterval(() => {
+      // Obtiene el objeto actual
+      const row = dataRows[currentIndex];
+      console.log(row); // Aquí haces lo que necesites con el dato actual
+
+      // cargar logs
+      const logArea = document.getElementById('logArea');
+      const logMessage = `${row.remitente} to ${row.receptor}: ${row.mensaje}`;
+      const logEntry = document.createElement('div');
+      logEntry.className = 'log-entry';
+      logEntry.textContent = logMessage;
+      logArea.appendChild(logEntry);
+      logArea.scrollTop = logArea.scrollHeight; // Desplazar hacia abajo
+
+      // cargar mensaje en la burbuja
+
+      const bubbleIds = [
+        "bubble-Brunswick",
+        "bubble-NGO",
+        "bubble-Media",
+        "bubble-Investors",
+        "bubble-Regulator",
+        "bubble-Employees"
+      ];
+
+      if (row.receptor === "Public") {
+        // Todas las burbujas muestran el mensaje
+        bubbleIds.forEach(id => {
+          const bubble = document.getElementById(id);
+          if (bubble) bubble.textContent = row.mensaje;
+        });
+      } else {
+        // Todas las burbujas muestran "..." excepto la del receptor
+        bubbleIds.forEach(id => {
+          const bubble = document.getElementById(id);
+          if (!bubble) return;
+          // El receptor debe coincidir con el id de la burbuja
+          if (id === `bubble-${row.receptor}`) {
+            bubble.textContent = row.mensaje;
+          } else {
+            bubble.textContent = "....";
+          }
+        });
+      }
+
+      const bubble = document.getElementById(`bubble-${row.receptor}`);
+      console.log(bubble);
+      if (bubble) {
+        bubble.textContent = row.mensaje;
+      }
+
+      // insertar datos en el grafico
+
+      let scores = row.scores;
+
+      const scoreKeys = ["Employees", "Investors", "Media", "NGOs", "Regulator"];
+      scoreKeys.forEach((key, i) => {
+        // Si el dataset aún no existe, lo creamos la primera vez
+        if (!chartInstance.data.datasets[i]) {
+          chartInstance.data.datasets[i] = {
+            label: key,
+            data: [],
+            borderColor: colors[i],
+            backgroundColor: colors[i],
+            fill: false,
+            tension: 0.1
+          };
+        }
+        // Push el nuevo valor
+        chartInstance.data.datasets[i].data.push(row.scores[key]);
+        // Mantén solo los últimos 7 valores (opcional)
+        if (chartInstance.data.datasets[i].data.length > 7) {
+          chartInstance.data.datasets[i].data.shift();
+        }
       });
-      // Auto-scroll al final
-      logEl.scrollTop = logEl.scrollHeight;
-    }
+      chartInstance.update();
 
-    // Llamar esta función para añadir nuevos mensajes
-    function addLog(type, text) {
-      logs.push({ type, text });
-      renderLogs();
-    }
 
-    // Inicializar display
-    renderLogs();
+      // Avanza el índice y vuelve a 0 si llega al final
+      currentIndex = (currentIndex + 1) % dataRows.length;
+    }, 5000);
 
-    // Ejemplo de uso con retraso:
-    setTimeout(() => addLog('receiver', 'Nuevo alerta de pagos fallidos.'), 3000);
+
+    // --- MOVIMIENTO DE AUTOS (NO TOCAR) ---
+    document.addEventListener('DOMContentLoaded', function () {
+      function moveElementDiagonallyInfinite(className, start, end, steps = 60, intervalMs = 150) {
+        const el = document.querySelector('.' + className);
+        if (!el) return;
+
+        let top = start.top;
+        let left = start.left;
+        const topStep = (end.top - start.top) / steps;
+        const leftStep = (end.left - start.left) / steps;
+        let currentStep = 0;
+
+        el.style.top = top + '%';
+        el.style.left = left + '%';
+
+        setInterval(() => {
+          if (currentStep >= steps) {
+            top = start.top;
+            left = start.left;
+            currentStep = 0;
+          }
+          top += topStep;
+          left += leftStep;
+          el.style.top = top + '%';
+          el.style.left = left + '%';
+          currentStep++;
+        }, intervalMs);
+      }
+
+      // Auto azul
+      moveElementDiagonallyInfinite(
+        'car',
+        { top: 8, left: 94 },
+        { top: 80, left: 0 },
+        60,
+        100
+      );
+
+      // Auto rojo
+      moveElementDiagonallyInfinite(
+        'car-red',
+        { top: 9, left: 0 },
+        { top: 81, left: 93 },
+        60,
+        150
+      );
+    });
   </script>
-
-
-
-
-
-
 </body>
 
 </html>
